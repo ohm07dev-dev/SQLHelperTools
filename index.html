@@ -90,26 +90,6 @@
               </label>
             </div>
 
-            <div class="output-mode-row">
-              <span>Output mode</span>
-              <div class="segmented-controls" role="group" aria-label="Output mode">
-                <button class="mode-button is-active" id="whereModeButton" type="button" data-mode="where">
-                  WHERE + Field
-                </button>
-                <button class="mode-button" id="valuesModeButton" type="button" data-mode="values">
-                  Values only
-                </button>
-                <button
-                  class="mode-button paren-button is-active is-hidden"
-                  id="parenthesesButton"
-                  type="button"
-                  aria-pressed="true"
-                >
-                  ()
-                </button>
-              </div>
-            </div>
-
             <div class="option-grid">
               <label class="check-field">
                 <input id="removeDuplicateInput" type="checkbox" />
@@ -144,14 +124,32 @@
           <section class="output-block" aria-label="SQL output">
             <div class="output-header">
               <span>Output</span>
-              <div class="output-tools">
-                <span class="status" id="statusText" role="status" aria-live="polite"></span>
-                <button class="copy-button" id="copyButton" type="button" title="Copy SQL" aria-label="Copy SQL">
-                  <svg aria-hidden="true" viewBox="0 0 24 24">
-                    <rect x="9" y="9" width="10" height="10" rx="2"></rect>
-                    <path d="M5 15V7a2 2 0 0 1 2-2h8"></path>
-                  </svg>
-                </button>
+              <div class="output-actions">
+                <div class="segmented-controls" role="group" aria-label="Output mode">
+                  <button class="mode-button is-active" id="whereModeButton" type="button" data-mode="where">
+                    WHERE + Field
+                  </button>
+                  <button class="mode-button" id="valuesModeButton" type="button" data-mode="values">
+                    Values only
+                  </button>
+                  <button
+                    class="mode-button paren-button is-active is-hidden"
+                    id="parenthesesButton"
+                    type="button"
+                    aria-pressed="true"
+                  >
+                    ()
+                  </button>
+                </div>
+                <div class="output-tools">
+                  <span class="status" id="statusText" role="status" aria-live="polite"></span>
+                  <button class="copy-button" id="copyButton" type="button" title="Copy SQL" aria-label="Copy SQL">
+                    <svg aria-hidden="true" viewBox="0 0 24 24">
+                      <rect x="9" y="9" width="10" height="10" rx="2"></rect>
+                      <path d="M5 15V7a2 2 0 0 1 2-2h8"></path>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
             <textarea id="outputText" readonly spellcheck="false"></textarea>

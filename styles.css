@@ -88,20 +88,6 @@ h1 {
   margin-bottom: 16px;
 }
 
-.output-mode-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.output-mode-row > span {
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 700;
-}
-
 .segmented-controls {
   display: flex;
   align-items: center;
@@ -364,6 +350,13 @@ textarea:focus {
   gap: 10px;
 }
 
+.output-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
 .output-block textarea {
   min-height: 120px;
   background: #fbfcfe;
@@ -382,16 +375,23 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
-  .output-mode-row {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
   .segmented-controls {
     justify-content: flex-start;
   }
 
   .output-header {
     align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .output-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .output-tools {
+    justify-content: space-between;
+    width: 100%;
   }
 }
