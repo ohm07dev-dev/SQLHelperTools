@@ -90,6 +90,26 @@
               </label>
             </div>
 
+            <div class="output-mode-row">
+              <span>Output mode</span>
+              <div class="segmented-controls" role="group" aria-label="Output mode">
+                <button class="mode-button is-active" id="whereModeButton" type="button" data-mode="where">
+                  WHERE + Field
+                </button>
+                <button class="mode-button" id="valuesModeButton" type="button" data-mode="values">
+                  Values only
+                </button>
+                <button
+                  class="mode-button paren-button is-active is-hidden"
+                  id="parenthesesButton"
+                  type="button"
+                  aria-pressed="true"
+                >
+                  ()
+                </button>
+              </div>
+            </div>
+
             <div class="option-grid">
               <label class="check-field">
                 <input id="removeDuplicateInput" type="checkbox" />

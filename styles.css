@@ -88,6 +88,60 @@ h1 {
   margin-bottom: 16px;
 }
 
+.output-mode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.output-mode-row > span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.segmented-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.mode-button {
+  min-height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 0 12px;
+}
+
+.mode-button:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+.mode-button.is-active {
+  border-color: #b8cdfa;
+  background: var(--soft);
+  color: var(--accent-dark);
+}
+
+.mode-button.is-hidden {
+  display: none;
+}
+
+.paren-button {
+  min-width: 42px;
+  padding: 0 10px;
+}
+
 .option-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(220px, 1fr)) 180px;
@@ -326,6 +380,15 @@ textarea:focus {
 
   .option-grid {
     grid-template-columns: 1fr;
+  }
+
+  .output-mode-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .segmented-controls {
+    justify-content: flex-start;
   }
 
   .output-header {

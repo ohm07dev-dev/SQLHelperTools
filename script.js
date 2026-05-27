@@ -6,9 +6,14 @@ const sortNumericField = document.querySelector("#sortNumericField");
 const sortNumericInput = document.querySelector("#sortNumericInput");
 const sortDirectionButton = document.querySelector("#sortDirectionButton");
 const valuesPerLineInput = document.querySelector("#valuesPerLineInput");
+const whereModeButton = document.querySelector("#whereModeButton");
+const valuesModeButton = document.querySelector("#valuesModeButton");
+const parenthesesButton = document.querySelector("#parenthesesButton");
 const outputText = document.querySelector("#outputText");
 const copyButton = document.querySelector("#copyButton");
 const statusText = document.querySelector("#statusText");
+let outputMode = "where";
+let shouldWrapValues = true;
 
 function splitValues(rawText) {
   const text = stripOuterParentheses(rawText.trim());
@@ -143,9 +148,19 @@ function buildSqlIn() {
     return value;
   });
 
-  outputText.value = formattedValues.length
-    ? `WHERE ${fieldName} IN (${formatSqlValues(formattedValues, valuesPerLine)})`
-    : "";
+  if (!formattedValues.length) {
+    outputText.value = "";
+    return;
+  }
+
+  const valuesOutput = formatSqlValues(formattedValues, valuesPerLine);
+
+  if (outputMode === "values") {
+    outputText.value = shouldWrapValues ? `(${valuesOutput})` : valuesOutput;
+    return;
+  }
+
+  outputText.value = `WHERE ${fieldName} IN (${valuesOutput})`;
 }
 
 function flashStatus(message) {
@@ -180,6 +195,29 @@ async function copyOutput() {
 });
 
 copyButton.addEventListener("click", copyOutput);
+whereModeButton.addEventListener("click", () => {
+  outputMode = "where";
+  whereModeButton.classList.add("is-active");
+  valuesModeButton.classList.remove("is-active");
+  parenthesesButton.classList.add("is-hidden");
+  buildSqlIn();
+});
+
+valuesModeButton.addEventListener("click", () => {
+  outputMode = "values";
+  valuesModeButton.classList.add("is-active");
+  whereModeButton.classList.remove("is-active");
+  parenthesesButton.classList.remove("is-hidden");
+  buildSqlIn();
+});
+
+parenthesesButton.addEventListener("click", () => {
+  shouldWrapValues = !shouldWrapValues;
+  parenthesesButton.classList.toggle("is-active", shouldWrapValues);
+  parenthesesButton.setAttribute("aria-pressed", String(shouldWrapValues));
+  buildSqlIn();
+});
+
 sortDirectionButton.addEventListener("click", () => {
   const nextDirection = sortDirectionButton.dataset.direction === "desc" ? "asc" : "desc";
   sortDirectionButton.dataset.direction = nextDirection;
