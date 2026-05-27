@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SQL Helper Tools</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="tool-panel" aria-labelledby="page-title">
+        <div class="title-row">
+          <div>
+            <p class="eyebrow">SQL Helper Tools</p>
+            <h1 id="page-title">Build SQL IN</h1>
+          </div>
+        </div>
+
+        <div class="workspace-grid">
+          <label class="field input-block">
+            <span>Input</span>
+            <textarea id="valuesInput" spellcheck="false" placeholder="10001&#10;10002&#10;10003">10001
+10002
+10003</textarea>
+          </label>
+
+          <section class="settings-panel" aria-label="SQL settings">
+            <div class="form-grid">
+              <label class="field">
+                <span>Field</span>
+                <input id="fieldInput" type="text" value="BILL_NUMBER" placeholder="BILL_NUMBER" />
+              </label>
+
+              <label class="field">
+                <span>Quote values</span>
+                <select id="quoteMode">
+                  <option value="single" selected>Single quotes</option>
+                  <option value="double">Double quotes</option>
+                  <option value="none">No quotes</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="option-grid">
+              <label class="check-field">
+                <input id="removeDuplicateInput" type="checkbox" />
+                <span>Remove duplicate</span>
+              </label>
+
+              <div class="check-field sort-field" id="sortNumericField">
+                <label class="sort-check" for="sortNumericInput">
+                  <input id="sortNumericInput" type="checkbox" />
+                  <span>Sort values as numbers</span>
+                </label>
+                <button
+                  class="sort-direction-button"
+                  id="sortDirectionButton"
+                  type="button"
+                  data-direction="asc"
+                  title="Toggle sort direction"
+                  aria-label="Toggle sort direction"
+                >
+                  ASC
+                </button>
+                <span class="tooltip-message" role="tooltip">Sort ใช้ได้เมื่อ input ทุกค่าเป็นตัวเลขเท่านั้น</span>
+              </div>
+
+              <label class="field">
+                <span>Values per line</span>
+                <input id="valuesPerLineInput" type="number" min="0" step="1" placeholder="One line" />
+              </label>
+            </div>
+          </section>
+
+          <section class="output-block" aria-label="SQL output">
+            <div class="output-header">
+              <span>Output</span>
+              <div class="output-tools">
+                <span class="status" id="statusText" role="status" aria-live="polite"></span>
+                <button class="copy-button" id="copyButton" type="button" title="Copy SQL" aria-label="Copy SQL">
+                  <svg aria-hidden="true" viewBox="0 0 24 24">
+                    <rect x="9" y="9" width="10" height="10" rx="2"></rect>
+                    <path d="M5 15V7a2 2 0 0 1 2-2h8"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <textarea id="outputText" readonly spellcheck="false"></textarea>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
